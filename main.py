@@ -24,7 +24,7 @@ def validate(text):
         raise ValueError("entry text violates the single-line gate")
     if not text.strip():
         raise ValueError("entry text violates the non-blank gate")
-    if any(ord(c) < 32 for c in text):
+    if any(ord(c) < 32 or ord(c) == 127 for c in text):
         raise ValueError("entry text violates the no-control-chars gate")
     return True
 
